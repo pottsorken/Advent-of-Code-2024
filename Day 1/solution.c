@@ -59,6 +59,16 @@ int check_sort(int *array, int length)
     return 1;
 }
 
+int search_for_number(int number, int *array, int length) {
+    int count = 0;
+    for (int i = 0; i < length; i++) {
+        if (number == array[i]) {
+            count++;
+        }
+    }
+    return number * count;
+}
+
 /* PART ONE
 int main() {
     int *input_array_int1 = (int *)malloc(1000 * sizeof(int));
@@ -77,5 +87,13 @@ int main() {
 */
 
 int main () {
-    
+    int *input_array_int1 = (int *)malloc(1000 * sizeof(int));
+    int *input_array_int2 = (int *)malloc(1000 * sizeof(int));
+    handle_input(input_array_int1, input_array_int2);    
+
+    long int similarity_score = 0;
+    for (int i = 0; i < 1000; i++) {
+        similarity_score = similarity_score + search_for_number(input_array_int1[i], input_array_int2, 1000);
+    }
+    printf("Total similarity score: %ld\n", similarity_score);
 }
